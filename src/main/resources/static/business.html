@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <title>感恩盲人推拿理疗中心</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">感恩盲人推拿理疗中心</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="changeUser" href="#" data-toggle="modal"
+                       data-target="#changeUserModal">修改密码</a></li>
+                <li><a id="loginOut" href="/loginOut">退出登录</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">
+            工单管理
+        </a>
+    </li>
+    <li><a href="#work" data-toggle="tab">业务管理</a></li>
+    <li><a href="#hr" data-toggle="tab">人事管理</a></li>
+    <li><a href="#settlementBusiness" data-toggle="tab">结算业务</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <!-- 工单管理面板区 -->
+    <div class="tab-pane fade in active" id="home">
+        <!--表格div 水平居中 上下左右37px-->
+        <div style="margin: 0 auto;margin: 37px 37px 37px 37px;">
+
+            <!--  bootstrap表格组件，悬浮加边框-->
+            <table class="table table-hover table-bordered">
+                <caption id = "sumt">工单列表</caption>
+                <caption> <!--表格上方按钮组-->
+                    <div class="btn-group" style=>
+                        <button id="wdtba" type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#workOrderAddModal">添加
+                        </button>
+                        <div class="input-group" style="margin-left: 77px; width: 237px;">
+                            <span class="input-group-addon">选择查看日期</span>
+                            <input type="date" id="workOrderFind" class="form-control" placeholder="选择查看日期">
+                        </div>
+                    </div>
+                    <!--月份选择-->
+                </caption>
+                <thead>
+                <tr>
+                    <th style="text-align: center;">序号</th>
+                    <th style="text-align: center;">项目</th>
+                    <th style="text-align: center;">操作人</th>
+                    <th style="text-align: center;">价格</th>
+                    <th style="text-align: center;">顾客来源</th>
+                    <th style="text-align: center;">操作时间</th>
+                    <th style="text-align: center;">工单操作</th>
+                </tr>
+                </thead>
+                <tbody id="workOrderTbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="work">
+        <div style="margin: 0 auto;margin: 37px 37px 37px 37px;">
+
+            <!--  bootstrap表格组件，悬浮加边框-->
+            <table class="table table-hover table-bordered">
+                <caption>类目列表</caption>
+                <caption> <!--表格上方按钮组-->
+                    <div class="btn-group" style=>
+                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#categoryAddModal">添加
+                        </button>
+                    </div>
+                    <!--月份选择-->
+                </caption>
+                <thead>
+                <tr>
+                    <th style="text-align: center;">序号</th>
+                    <th style="text-align: center;">项目名称</th>
+                    <th style="text-align: center;">价格</th>
+                    <th style="text-align: center;">定价来源</th>
+                    <th style="text-align: center;">操作</th>
+                </tr>
+                </thead>
+                <tbody id="categoryTbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="hr">
+        <div style="margin: 0 auto;margin: 37px 37px 37px 37px;">
+
+            <!--  bootstrap表格组件，悬浮加边框-->
+            <table class="table table-hover table-bordered">
+                <caption>人员列表</caption>
+                <caption>
+                    <!--表格上方按钮组-->
+                    <div class="btn-group" style=>
+                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#personnelAddModal">添加
+                        </button>
+                    </div>
+                    <!--月份选择-->
+                </caption>
+                <thead>
+                <tr>
+                    <th style="text-align: center;">序号</th>
+                    <th style="text-align: center;">姓名</th>
+                    <th style="text-align: center;">工资比例</th>
+                    <th style="text-align: center;">操作</th>
+                </tr>
+                </thead>
+                <tbody id="PersonnelTbody">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="settlementBusiness">
+        <div style="margin: 0 auto;margin: 37px 37px 37px 37px;">
+
+            <!--  bootstrap表格组件，悬浮加边框-->
+            <table class="table table-hover table-bordered">
+                <caption>工单列表</caption>
+                <caption> <!--表格上方按钮组-->
+                    <div class="btn-group" style=>
+                        <div class="input-group" style="width: 237px;">
+                            <span class="input-group-addon">选择工资结算月份</span>
+                            <input type="month" id="payrollFind" class="form-control" placeholder="选择查看日期">
+                        </div>
+                    </div>
+                    <!--月份选择-->
+                </caption>
+                <thead>
+                <tr>
+                    <th style="text-align: center;">姓名</th>
+                    <th style="text-align: center;">营业额</th>
+                    <th style="text-align: center;">工资</th>
+                </tr>
+                </thead>
+                <tbody id="payrollTbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<!-- 工单表上方添加框 -->
+<div class="modal fade" id="workOrderAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">添加工单</h4>
+            </div>
+            <div class="modal-body">
+                <form id="workOrderAddForm" class="form-horizontal" role="form" method="post"
+                      action="/business/workOrder/addOneWorkOrder">
+                    <!-- 项目选择框-->
+                    <div class="form-group">
+                        <label for="categoryName" class="col-sm-2 control-label">选择类目</label>
+                        <div class="col-sm-10">
+                            <select id="categoryName" class="form-control">
+
+                            </select>
+                        </div>
+                    </div>
+                    <!--操作人选择框-->
+                    <div class="form-group">
+                        <label for="operator" class="col-sm-2 control-label">选择操作人</label>
+                        <div class="col-sm-10">
+                            <select id="operator" class="form-control">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">价格</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="price" name="price" placeholder="请输入价格">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="workDate" class="col-sm-2 control-label">操作时间</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="workDate" name="workDate"
+                                   placeholder="操作时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="source" class="col-sm-2 control-label">顾客来源</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="source" name="source" placeholder="请输入顾客来源">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="workOrderModalSubBtn">添加</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- 工单删除确认框 -->
+<div class="modal fade" id="workoOrderDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="workoOrderDeleteModalLabel">删除确认</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-bordered">
+                    <caption>确认要删除该条工单信息吗</caption>
+                    <caption>
+
+                    </caption>
+                    <thead>
+                    <th style="text-align: center;">序号</th>
+                    <th style="text-align: center;">项目</th>
+                    <th style="text-align: center;">操作人</th>
+                    <th style="text-align: center;">价格</th>
+                    <th style="text-align: center;">顾客来源</th>
+                    <th style="text-align: center;">操作时间</th>
+                    </thead>
+                    <tbody id="workoOrderDeleteTbody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="workoOrderDeleteBtn">删除</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- 类目表上方添加框 -->
+<div class="modal fade" id="categoryAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="categoryAddModalLabel">添加类目</h4>
+            </div>
+            <div class="modal-body">
+                <form id="categoryAddForm" class="form-horizontal" role="form" method="post"
+                      action="/business/workOrder/addOneWorkOrder">
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">类目名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="cN" name="categoryName"
+                                   placeholder="请输入类目名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">类目价格</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="categoryPrice" name="categoryPrice"
+                                   placeholder="请输入类目价格">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">定价来源</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="priceSource" name="price"
+                                   placeholder="请输入定价来源">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="categoryModalSubBtn">添加</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- 人员表上方添加框 -->
+<div class="modal fade" id="personnelAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="personnelAddModalLabel">添加人员</h4>
+            </div>
+            <div class="modal-body">
+                <form id="personnelAddForm" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">人员名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="pname" name="pname" placeholder="请输入名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="proportion" class="col-sm-2 control-label">工资比例</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="proportion" name="proportion"
+                                   placeholder="请输入工资比例">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="personnelModalSubBtn">添加</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- 密码修改框 -->
+<div class="modal fade" id="changeUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="changeUserModalLabel">添加人员</h4>
+            </div>
+            <div class="modal-body">
+                <form id="changeUserFrom" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="un" name="un" placeholder="请输入用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="proportion" class="col-sm-2 control-label">旧密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="oup" name="oup"
+                                   placeholder="请输入旧密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="proportion" class="col-sm-2 control-label">新密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nup" name="nup"
+                                   placeholder="请输入新密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="changeUserModalSubBtn">修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- 密码修改框 -->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="Js/business.js"></script>
+</body>
+</html>
