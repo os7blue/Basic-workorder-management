@@ -1,6 +1,8 @@
 # Basic-workorder-management
 一个简单的工单管理系统，包含工单管理，人事管理，提成设置，结算业务。
 
+(其实就是三张表的增删改查)
+
 使用springboot + mybatis + sqlite3 + freemaker + bootstarp 
 
 一切站在巨人的肩膀上
